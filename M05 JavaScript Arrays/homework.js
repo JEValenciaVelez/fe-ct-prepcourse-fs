@@ -55,20 +55,24 @@ function dePalabrasAFrase(palabras) {
    // con un espacio entre cada palabra.
    // Ejemplo: ['Hello', 'world!'] -> 'Hello world!'.
    // Tu código:
-   var cadena = palabras.toString();
+   var cadena = palabras.join(' ');
    return cadena;
 }
+
 
 function arrayContiene(array, elemento) {
    // Verifica si el elemento existe dentro del arreglo recibido.
    // Retornar True si está, o False si no está.
    // Tu código:
-   var articuloEncontrado = array.some(function(articulo){
-       return articulo == elemento;
-   });
-
-   console.log(articuloEncontrado)
+   for(var elem of array){
+      if(elem == elemento){
+         return true;
+      }
+      
+   }
+   return false;
 }
+
 
 function agregarNumeros(arrayOfNums) {
    // El parámetro "arrayOfNums" debe ser un arreglo de números.
@@ -109,20 +113,23 @@ function multiplicarArgumentos() {
    // Si no se pasan argumentos retorna 0. Si se pasa un argumento, simplemente retórnalo.
    // [PISTA]: "arguments" es un arreglo.
    // Tu código:
-   if(args.length < 1){
-       return 0;
-      }
-      else if(args.length == 1){
-       return args;
-      }
-      else{
-       const solution = args.reduce(function(count,valor){
-           count *= valor;
-           return count;
-       });
-       return solution;
-      }
+   if(arguments.length == 1){
+      return arguments[0];
+   }
+   else if(arguments.length > 1){
+      var count = 1;
+   for(var i = 0; i < arguments.length; i++){
+      count *= arguments[i];
+   }
+   return count;
+   }
+   else{
+      return 0;
+   }
+   
 }
+
+//console.log(multiplicarArgumentos());
 
 function cuentoElementos(array) {
    // Desarrolla una función que retorne la cantidad de elementos del arreglo cuyo valor sea mayor que 18.
@@ -159,41 +166,81 @@ function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar True si el entero inicia con 9 y False en otro caso.
    // Tu código:
-   var list = num.split('');
-   if(list[0] == '9'){
-     return true;
-   }
-   else{
-     return false;
-   }
+   
 }
 
-// console.log(empiezaConNueve('98'));
+//console.log(empiezaConNueve());
+
 
 function todosIguales(array) {
    // Si todos los elementos del arreglo son iguales, retornar True.
    // Caso contrario retornar False.
    // Tu código:
-}
+   var solution = array.every(function(e){
+      return array[0] == e;
+   });
+
+   return solution;
+   
+}  
+//console.log(todosIguales([1,2,3,4]));
+
 
 function mesesDelAño(array) {
    // El arreglo contiene algunos meses del año desordenados. Debes recorrerlo, buscar los meses "Enero",
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+   
+   var newArray = [];
+   for(var mes of array){
+      if(mes == 'Enero' || mes == "Marzo" || mes == "Noviembre" ){
+         newArray.push(mes);
+      }  
+   }
+   if(newArray.length == 3){
+      return newArray;
+   }
+   else{
+      return "No se encontraron los meses pedidos";
+   }
+  
+   
 }
+
+//console.log(mesesDelAño(['Febrero','Diciembre']));
+
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+   const tablaDelSeis = [];
+   for(var i = 0; i <= 10; i++){
+      tablaDelSeis.push(i*6);
+   }
+   return tablaDelSeis;
+   
 }
+
+
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   var listMayores = [];
+   for(num of array){
+      if(num > 100){
+         listMayores.push(num);
+      }
+   }
+
+   return listMayores;
+
 }
+
+
 
 /* ----------------------------------------------------------------------------------
 💪 EXTRA CREDIT EXTRA CREDIT EXTRA CREDIT EXTRA CREDIT EXTRA CREDIT  EXTRA CREDIT 💪
@@ -206,7 +253,27 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+   var listNums = [];
+   
+   for(var i = 1; i <= 10 ; i++){
+      
+     listNums.push(num);
+       
+      if(num == i){
+         return "Se interrumpió la ejecución";
+         break;
+      }
+      num += 2;
+   }
+
+   return listNums;
 }
+
+//console.log(breakStatement(2));
+
+
+
+
 
 function continueStatement(num) {
    // Iterar en un bucle aumentando en 2 el número recibido hasta un límite de 10 veces.
@@ -215,7 +282,21 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+   var listNums = [];
+   
+   for(var i = 1; i <= 10 ; i++){
+      if(i == 5) {
+         continue;
+      }
+     listNums.push(num);
+     num += 2;
+   }
+
+   return listNums;
+
 }
+
+//console.log(continueStatement(2));
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
 module.exports = {

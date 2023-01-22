@@ -16,16 +16,15 @@ function crearUsuario() {
            this.usuario = usuario;
            this.nombre = nombre;
            this.email = email;
+           this.password = password;
 
-           let saludar = function(){
+           this.saludar = function(){
                return `Hola, mi nombre es ${this.nombre}`
            }
        }
    }
+   return Usuario;
 
-   let objeto = new Usuario(1234,'Juan', 'juancho123@mail.com', 'Gaby123');
-
-   return objeto;
 }
 
 //console.log(crearUsuario());

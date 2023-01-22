@@ -210,7 +210,7 @@ function esPrimo(num) {
    return true;
 }
 
-console.log(esPrimo(27))
+//console.log(esPrimo(27))
 
 function esVerdadero(valor) {
    // Si "valor" es verdadero retornar "Soy verdadero".
